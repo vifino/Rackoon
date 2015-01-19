@@ -27,7 +27,7 @@
 			(sb (string-append "(define host " (format "~v" host) ")"))
 			(fprintf out
 				(string-append "PRIVMSG " chan " :"
-					(evalsb (string-append "(" (second (regexp-match #rx"\\((.*)\\)" msg)) ")"));) " ")
+					(evalsb (string-append "(" (second (regexp-match #rx"^\\((.*)\\)$" msg)) ")"));) " ")
 				"\r\n")
 			)
 			(flush-output out)

@@ -31,7 +31,6 @@
 	(input-loop)
 )
 (thread (lambda () (input-loop)))
-;(fprintf out "JOIN #ocbots\r\n")
 (flush-output out)
 (define (loop)
 	(flush-output out)
