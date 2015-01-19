@@ -41,7 +41,7 @@
 	(flush-output (current-output-port))
 	(when (regexp-match? #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line)
 		;(let-values ([(nick user host chan msg) (cdr (regexp-match #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line))]) (
-		(match (cdr (regexp-match #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line)) [(list nick user host chan msg)
+		(match (cdr (regexp-match #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)[\r\n]+" line)) [(list nick user host chan msg)
 			(flush-output out)
 			(cmd_eval out nick user host chan msg)
 			(flush-output out)
