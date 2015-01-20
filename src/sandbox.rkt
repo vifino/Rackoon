@@ -7,8 +7,8 @@
 	(parameterize (
 		[sandbox-output 'string]
 		[sandbox-error-output 'string]
-		[sandbox-eval-limits (list 10 50)]
-	) (make-evaluator 'racket)
+		[sandbox-eval-limits (list 2 20)]
+	) (make-evaluator 'racket/base)
 	)
 )
 
@@ -30,7 +30,6 @@
 					(evalsb (second (regexp-match #rx"^\\)->(.*)$" msg)));) " ")
 				"\r\n")
 			)
-			(flush-output out)
 		)))
 	)
 )

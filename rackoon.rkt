@@ -39,7 +39,7 @@
 	;(define line (read-line in))
 	(display (regexp-replace "[\r\n]+" line "\n"))
 	(flush-output (current-output-port))
-	(thread (λ () ((when (regexp-match? #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line)
+	(when (regexp-match? #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line)
 		;(let-values ([(nick user host chan msg) (cdr (regexp-match #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)" line))]) (
 		(match (cdr (regexp-match #rx":(.*?)!(.*?)@(.*?) PRIVMSG (.*?) :(.*)[\r\n]+" line)) [(list nick user host chan msg)
 			(flush-output out)
@@ -47,7 +47,7 @@
 			(flush-output out)
 			;(cmd_eval (first vals))
 		])
-	))))
+	)
 	; PING logic here.
 	(when (regexp-match? #rx"PING (.*)" line)
 		(send out (string-append "PONG " (second (regexp-match #rx"PING (.*)" line))))
