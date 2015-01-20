@@ -20,7 +20,7 @@
 
 (define (cmd_eval out nick user host chan msg)
 	(when (regexp-match? #rx"^\\)->(.*)$" msg)
-		(thread (lambda () 
+		(thread (lambda () ( 
 			(sb (string-append "(define nick " (format "~v" nick) ")"))
 			(sb (string-append "(define chan " (format "~v" chan) ")"))
 			(sb (string-append "(define user " (format "~v" user) ")"))
@@ -31,7 +31,7 @@
 				"\r\n")
 			)
 			(flush-output out)
-		))
+		)))
 	)
 )
 
